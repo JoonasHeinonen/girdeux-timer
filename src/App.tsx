@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Button from './components/Button/Button'
 import Timer from './components/Timer/Timer'
+import React from 'react'
 
 const App = () => {
   const [hours, setHours] = useState(0)
@@ -26,6 +27,7 @@ const App = () => {
     setHours(0)
     setMinutes(0)
     setSeconds(0)
+    setStartButtonLabel('Start')
   }
 
   // Main loop.
