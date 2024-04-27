@@ -6,21 +6,43 @@ const App = () => {
   const [hours, setHours] = useState(0)
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(0)
+  const [started, setStarted] = useState(false)
+  const [startButtonLabel, setStartButtonLabel] = useState<string>('Start')
 
   const start = () => {
-    // TODO Implement start functionality here
-    console.log('Start')
+    setStarted(true)
+    setStartButtonLabel('Start')
   }
 
   const pause = () => {
-    // TODO Implement pause functionality here
-    console.log('Pause')
+    if (started) {
+      setStarted(false)
+      setStartButtonLabel('Continue')
+    }
   }
 
   const reset = () => {
+    setStarted(false)
     setHours(0)
     setMinutes(0)
     setSeconds(0)
+  }
+
+  // Main loop.
+  if (started) {
+    setTimeout(
+      () => setSeconds(seconds + 1),
+      1000
+    )
+    if (seconds > 59) {
+      setSeconds(0)
+      setMinutes(minutes + 1)
+    }
+    if (minutes > 59) {
+      setSeconds(0)
+      setMinutes(0)
+      setHours(hours + 1)
+    }
   }
 
   return (
@@ -34,7 +56,7 @@ const App = () => {
         />
         <Button 
           handleClick={() => start()}
-          label={'Start'}
+          label={startButtonLabel}
         />
         <Button 
           handleClick={() => pause()}

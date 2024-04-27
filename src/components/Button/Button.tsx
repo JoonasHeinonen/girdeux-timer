@@ -10,9 +10,7 @@ const Button = ({
   label,
 }: ButtonProps) => {
   return (
-    <div>
-      <button onClick={handleClick}>{label}</button>
-    </div>
+    <button onClick={handleClick}>{label}</button>
   )
 }
 
