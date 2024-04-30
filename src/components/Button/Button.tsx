@@ -1,4 +1,5 @@
 import React, { MouseEventHandler } from "react"
+import './Button.scss'
 
 interface ButtonProps {
   handleClick: MouseEventHandler<HTMLButtonElement>
@@ -10,7 +11,7 @@ const Button = ({
   label,
 }: ButtonProps) => {
   return (
-    <button onClick={handleClick}>{label}</button>
+    <button className={'Button'} onClick={handleClick}>{label}</button>
   )
 }
 

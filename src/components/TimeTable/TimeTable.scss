@@ -1,0 +1,10 @@
+@import '../../App.scss';
+
+.Unit {
+  display: inline-block;
+  background-color: lightgray;
+  font-weight: bold;
+  margin: $minMargin;
+  padding: $defaultMargin;
+  border-radius: $minMargin;
+}

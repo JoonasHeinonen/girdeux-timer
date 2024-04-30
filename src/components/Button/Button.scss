@@ -1,0 +1,21 @@
+@import '../../App.scss';
+
+.Button {
+  text-align: center;
+  margin: $minMargin;
+  padding: $minMargin;
+  min-width: 2.5em;
+  border: 0px;
+  color: white;
+  font-weight: bold;
+  background-color: $buttonColor;
+  border-radius: $minMargin;
+}
+
+.Button:hover {
+  background-color: $buttonHoverColor;
+}
+
+.Button:active {
+  background-color: $buttonClickColor;
+}

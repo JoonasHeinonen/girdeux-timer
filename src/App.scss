@@ -1,0 +1,30 @@
+// TO BE DEFINED LATER ON.
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+// SASS CONST VARIABLES.
+$minMargin: 0.5em;
+$defaultMargin: 1em;
+$buttonColor: royalblue;
+$buttonHoverColor: rgb(114, 145, 238);
+$buttonClickColor: rgb(45, 80, 187);
+
+* {
+  font-family: "Roboto";
+  text-transform: uppercase;
+}
+
+body {
+  background-color: lightgray;
+}
+
+.App, .App *, .AppHeader {
+  text-align: center;
+}
+
+.Timers {
+  width: 100%;
+}
+
+.Timers * {
+  margin: $defaultMargin;
+}

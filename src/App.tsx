@@ -1,73 +1,48 @@
 import { useState } from 'react'
-import Button from './components/Button/Button'
 import Timer from './components/Timer/Timer'
 import React from 'react'
+import './App.scss'
+import Button from './components/Button/Button'
+import Header from './components/Header/Header'
 
 const App = () => {
-  const [hours, setHours] = useState(0)
-  const [minutes, setMinutes] = useState(0)
-  const [seconds, setSeconds] = useState(0)
-  const [started, setStarted] = useState(false)
-  const [startButtonLabel, setStartButtonLabel] = useState<string>('Start')
+  const [timers, setTimers] = useState([])
+  const [timerId, setTimerId] = useState(0)
 
-  const start = () => {
-    setStarted(true)
-    setStartButtonLabel('Start')
+  const AddNewTimer = () => {
+    setTimerId(timerId + 1)
+    setTimers([
+    ...timers,
+    { id: timerId }
+  ])}
+
+  const RemoveLatestTimer = () => {
+    setTimerId(timerId - 1)
+    setTimers(timers.slice(0, -1))
   }
 
-  const pause = () => {
-    if (started) {
-      setStarted(false)
-      setStartButtonLabel('Continue')
-    }
-  }
-
-  const reset = () => {
-    setStarted(false)
-    setHours(0)
-    setMinutes(0)
-    setSeconds(0)
-    setStartButtonLabel('Start')
-  }
-
-  // Main loop.
-  if (started) {
-    setTimeout(
-      () => setSeconds(seconds + 1),
-      1000
-    )
-    if (seconds > 59) {
-      setSeconds(0)
-      setMinutes(minutes + 1)
-    }
-    if (minutes > 59) {
-      setSeconds(0)
-      setMinutes(0)
-      setHours(hours + 1)
-    }
-  }
+  console.log(timerId)
+  console.log(timers)
 
   return (
     <>
-      <div>
-        <h1>Counter App</h1>
-        <Timer
-          hours={hours}
-          minutes={minutes}
-          seconds={seconds}
-        />
-        <Button 
-          handleClick={() => start()}
-          label={startButtonLabel}
-        />
-        <Button 
-          handleClick={() => pause()}
-          label={'Pause'}
-        />
-        <Button 
-          handleClick={() => reset()}
-          label={'Reset'}
-        />
+      <div className={'App'}>
+        <Header header={'GIRDEUX TIMER'} />
+        <div className={'Timers'}>
+          {timers.map(timer => 
+            <Timer key={timer.id} />
+          )}
+        </div>
+        <div>
+          <Button 
+            handleClick={() => AddNewTimer()}
+            label={'+'}
+          />
+          <Button 
+            handleClick={() => RemoveLatestTimer()}
+            label={'-'}
+          />
+        </div>
       </div>
     </>
   )
